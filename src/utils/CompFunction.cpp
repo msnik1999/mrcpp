@@ -361,7 +361,7 @@ template <int D> void CompFunction<D>::setCplx(FunctionTree<D, ComplexDouble> *t
  */
 template <int D> void CompFunction<D>::add(ComplexDouble c, CompFunction<D> inp) {
 
-    if (Ncomp() > 0 and Ncomp() != inp.Ncomp()) {
+    if (Ncomp() > 0 and inp.Ncomp() > 0 and Ncomp() != inp.Ncomp()) {
         MSG_ABORT("Cannot add CompFunction with different number of components"<<" "<<Ncomp()<<" "<<inp.Ncomp());
     }
     if (getNNodes() == 0) alloc(inp.Ncomp());
