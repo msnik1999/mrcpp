@@ -2042,7 +2042,7 @@ ComplexMatrix calc_overlap_matrix_cplx(CompFunctionVector &BraKet) {
                             if (BraKet[orbVec[i]].func_ptr->data.n1[0] != BraKet[orbVec[j]].func_ptr->data.n1[0] and BraKet[orbVec[i]].func_ptr->data.n1[0] != 0 and
                                 BraKet[orbVec[j]].func_ptr->data.n1[0] != 0)
                                 continue;
-                            S_omp(orbVec[i], orbVec[j]) += S_temp(i, j);
+                            S(orbVec[i], orbVec[j]) += S_temp(i, j);
                         }
                     }
                 }
