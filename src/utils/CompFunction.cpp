@@ -382,7 +382,7 @@ template <int D> void CompFunction<D>::add(ComplexDouble c, CompFunction<D> inp)
             }else if (func_ptr->data.c1[0].imag() > MachineZero or inp.func_ptr->data.c1[0].imag()  > MachineZero){
                 MSG_ABORT("Not implemented");
             } else {
-                if(func_ptr->data.c1[0].real() > MachineZero){
+                if(std::abs(1.0 - func_ptr->data.c1[0].real()) > MachineZero){
                     rescale(func_ptr->data.c1[0].real());
                     for (int i = 1; i < Ncomp(); i++) {
                         if (std::norm(func_ptr->data.c1[0]-func_ptr->data.c1[i]) > MachineZero)
@@ -437,14 +437,14 @@ template <int D> void CompFunction<D>::add(ComplexDouble c, CompFunction<D> inp)
     }
 }
 
-template <int D> int CompFunction<D>::crop(double prec) {
+template <int D> int CompFunction<D>::crop(double prec, bool absPrec) {
     if (prec < 0.0) return 0;
     int nChunksremoved = 0;
     for (int i = 0; i < Ncomp(); i++) {
         if (isreal()) {
-            nChunksremoved += CompD[i]->crop(prec, 1.0, false);
+            nChunksremoved += CompD[i]->crop(prec, 1.0, absPrec);
         } else {
-            nChunksremoved += CompC[i]->crop(prec, 1.0, false);
+            nChunksremoved += CompC[i]->crop(prec, 1.0, absPrec);
         }
     }
     return nChunksremoved;
