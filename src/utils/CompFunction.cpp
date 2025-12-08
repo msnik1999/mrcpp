@@ -2734,6 +2734,7 @@ template ComplexDouble dot(CompFunction<3> bra, CompFunction<3> ket);
 template void project(CompFunction<3> &out, RepresentableFunction<3, double> &f, double prec);
 template void project(CompFunction<3> &out, RepresentableFunction<3, ComplexDouble> &f, double prec);
 template void multiply(CompFunction<3> &out, CompFunction<3> inp_a, CompFunction<3> inp_b, double prec, bool absPrec, bool useMaxNorms, bool conjugate);
+template void multiply(double prec, CompFunction<3> &out, double coef, CompFunction<3> inp_a, CompFunction<3> inp_b, int maxIter = -1, bool absPrec = false, bool useMaxNorms = false, bool conjugate = false);
 template void multiply(CompFunction<3> &out, FunctionTree<3, double> &inp_a, RepresentableFunction<3, double> &f, double prec, int nrefine = 0, bool conjugate);
 template void multiply(CompFunction<3> &out, FunctionTree<3, ComplexDouble> &inp_a, RepresentableFunction<3, ComplexDouble> &f, double prec, int nrefine = 0, bool conjugate);
 template void multiply(CompFunction<3> &out, CompFunction<3> &inp_a, RepresentableFunction<3, double> &f, double prec, int nrefine = 0, bool conjugate);
