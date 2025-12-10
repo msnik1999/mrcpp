@@ -121,6 +121,8 @@ public:
                         func_ptr->data.iscomplex = 1;}
     int share() const { return func_ptr->data.shared; }
     int *Nchunks() const { return func_ptr->data.Nchunks; } // number of chunks of each component tree
+    ComplexDouble getFac() const { return func_ptr->data.c1[0]; } // returns the overall multiplicative factor
+    void setFac(ComplexDouble fac) { func_ptr->data.c1[0] = fac; } // sets the overall multiplicative factor
 
     CompFunction paramCopy(bool alloc = false) const;
     ComplexDouble integrate() const;
@@ -135,7 +137,7 @@ public:
     const int getRank() const { return func_ptr->rank; };
     void add(ComplexDouble c, CompFunction<D> inp);
 
-    int crop(double prec);
+    int crop(double prec, bool absPrec = true);
     void rescale(ComplexDouble c);
     void free();
     int getSizeNodes() const;
