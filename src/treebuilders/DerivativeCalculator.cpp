@@ -91,7 +91,7 @@ template <int D, typename T> void DerivativeCalculator<D, T>::calcNode(MWNode<D,
     outNode.zeroCoefs();
     int nComp = (1 << D);
     std::vector<T> tmpCoefs(outNode.getNCoefs());
-    OperatorState<D, T> os(outNode, tmpCoefs);
+    OperatorState<D, T> os(outNode, tmpCoefs.data());
 
     os.setFNode(inpNode);
     os.setFIndex(inpNode.nodeIndex);
@@ -117,7 +117,7 @@ template <int D, typename T> void DerivativeCalculator<D, T>::calcNode(MWNode<D,
 
     int nComp = (1 << D);
     std::vector<T> tmpCoefs(gNode.getNCoefs());
-    OperatorState<D, T> os(gNode, tmpCoefs);
+    OperatorState<D, T> os(gNode, tmpCoefs.data());
     this->operStat.incrementGNodeCounters(gNode);
 
     // Get all nodes in f within the bandwith of O in g

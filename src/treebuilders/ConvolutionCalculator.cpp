@@ -228,7 +228,7 @@ template <int D, typename T> void ConvolutionCalculator<D, T>::calcNode(MWNode<D
     int o_depth = gNode.getScale() - this->oper->getOperatorRoot();
     if (manipulateOperator and this->oper->getOperatorRoot() < 0) o_depth = gNode.getDepth();
     std::vector<T> tmpCoefs(gNode.getNCoefs());
-    OperatorState<D, T> os(gNode, tmpCoefs);
+    OperatorState<D, T> os(gNode, tmpCoefs.data());
     this->operStat.incrementGNodeCounters(gNode);
 
     // Get all nodes in f within the bandwith of O in g

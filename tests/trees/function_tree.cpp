@@ -69,6 +69,7 @@ SCENARIO("Generating FunctionTree nodes", "[function_tree_generating], [function
 }
 
 template <int D> void testGeneratedNodes() {
+    unsigned int depth = 3;
     Coord<D> r;
     if (r.size() >= 1) r[0] = -0.3;
     if (r.size() >= 2) r[1] = 0.6;
@@ -83,6 +84,7 @@ template <int D> void testGeneratedNodes() {
     THEN("there are no GenNodes") { REQUIRE(tree.getNGenNodes() == 0); }
 
     WHEN("a non-existing node is fetched") {
+        MWNode<D> &node = tree.getNode(r, depth);
         THEN("there will be allocated GenNodes") {
             REQUIRE(tree.getNGenNodes() > 0);
 
@@ -91,6 +93,7 @@ template <int D> void testGeneratedNodes() {
                 THEN("there will be no GenNodes") { REQUIRE(tree.getNGenNodes() == 0); }
             }
         }
+        (void)&node; // Clean up the fetched node
     }
     finalize(&mra);
 }
