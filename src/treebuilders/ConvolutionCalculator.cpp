@@ -143,7 +143,6 @@ template <int D, typename T> MWNodeVector<D, T> *ConvolutionCalculator<D, T>::ma
     auto *band = new MWNodeVector<D, T>;
 
     int o_depth = gNode.getScale() - this->oper->getOperatorRoot();
-    int g_depth = gNode.getDepth();
     int width = this->oper->getMaxBandWidth(o_depth);
 
     bool periodic = gNode.getMWTree().isPeriodic();
@@ -228,7 +227,7 @@ template <int D, typename T> void ConvolutionCalculator<D, T>::calcNode(MWNode<D
 
     int o_depth = gNode.getScale() - this->oper->getOperatorRoot();
     if (manipulateOperator and this->oper->getOperatorRoot() < 0) o_depth = gNode.getDepth();
-    T tmpCoefs[gNode.getNCoefs()];
+    std::vector<T> tmpCoefs(gNode.getNCoefs());
     OperatorState<D, T> os(gNode, tmpCoefs);
     this->operStat.incrementGNodeCounters(gNode);
 
