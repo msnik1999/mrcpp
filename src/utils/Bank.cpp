@@ -8,8 +8,8 @@ namespace mrcpp {
 using namespace Eigen;
 using namespace std;
 
-int metadata_block[3]; // can add more metadata in future
 #ifdef MRCPP_HAS_MPI
+    int metadata_block[3]; // can add more metadata in future
     int const size_metadata = 3;
 #endif
 
