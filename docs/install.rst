@@ -37,7 +37,6 @@ C++ dependencies
 ----------------
 
 - Linear algebra: `Eigen-3.4  <https://gitlab.com/libeigen/eigen>`_
-- BLAS (optional)
 
 Eigen will be downloaded automatically at configure time by CMake,
 but can also be linked manually by setting the variable::
